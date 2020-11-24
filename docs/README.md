@@ -11,7 +11,16 @@ Version 1.9.6
 
 ---
 
-## Download
+## Version support
+
+The Element Face iOS SDK supports iOS 10 and above.
+
+## Prerequisites
+
+### Element Dashboard Account
+An account is required to access the Element Dashboard.
+
+### Framework
 You need to download the ElementSDK.framework and the associated files (assets in ThemeBundles.zip and local processing add-on in LocalProcessing.bundle.zip) on your Element dashboard page under **Account -> SDK -> SDK Files:**
 
 ![alt text](./Images/img_0001.png "sdk file location")
@@ -148,9 +157,9 @@ The Element SDK needs to be configured with your EAK (Encrypted Access Key) befo
 
 See **EAK - Encrypted Access Key** below for more information.
 
-The ElementSDK provides liveness detection, it is enabled by default but you can configure this by selecting the appropriate `faceAntiSpoofingType` value.  See **Liveness detection** below for more information.
+The ElementSDK provides liveness detection, it is enabled by default but you can configure this by selecting the appropriate `faceAntiSpoofingType` value.  More **Liveness detection** related configurations can be found in the documentations on the Element Dashboard.
 
-Another key thing you can set is the `theme`; the newest theme is the `ELTUIThemeFlowerPetals` and it is recommended.  You will need to add the associated bundle to your Xcode project (example: the `ELTUIThemeFlowerPetals` uses the files in the `FlowerPetals.bundle` bundle).  See **Theme** below for more information.
+Another option you can set is the `theme`; the newest theme is the `ELTUIThemeFlowerPetals` and it is recommended.  You will need to add the associated bundle to your Xcode project (example: the `ELTUIThemeFlowerPetals` uses the files in the `FlowerPetals.bundle` bundle). 
 
 Other values you can set are:
 * Whether or not you need the user’s location at the time of authentication:
@@ -189,17 +198,18 @@ Once created, you can now copy the EAK and use it in your code or download it.
 - (BOOL)initializeWithConfigurationData:(nonnull NSString *)eakString;
 ```
 
-### Local Sample Application
+## Local Sample Application
 You can download a demo application on Github:  <https://github.com/Element1/element-ios-face-sdk-local-example>
-It shows how to integrate and use the Framework (all the APIs described in this document are used in the demo). The project is located in the Example directory, it is called *face_demo_protected.xcodeproj*
+It shows how to integrate and use the Framework (all the APIs described in this document are used in the demo). The project is located in the Example directory, called *face_demo_protected.xcodeproj*
 
-Please note that this public repository doesn’t contain the ElementSDK.framework (the framework contained in the ElementSDK.framework.zip zip file) so you will need to copy it in the following directory: *element-ios-face-sdk-local-example/Example/demo/Frameworks*
+Please note that this public repository doesn’t contain the ElementSDK.framework (the framework included in the ElementSDK.framework.zip zip file) so you will need to copy it in the following directory: *element-ios-face-sdk-local-example/Example/demo/Frameworks*
 
 ![alt text](./Images/img_0023.png "directory tree")
 
 The demo application can only be run on a device (it doesn’t run in the simulator).  
+
 ### Putting it all together
-To add Element’s face biometry to your app:
+To add Element’s face authentication to your app:
 1. Match your own user ids with Element’s userId by either using the same id, using a 1 way function to get your element id from your own user id or by having another sort of mapping.
 1. Check if your user has an Element account on the device by using the getAccountByUserId method.
 1. If the ELTAccount’s faceAccountState is ELTAccountStateReady, you can start authenticating your users.
@@ -209,10 +219,13 @@ To add Element’s face biometry to your app:
 If the account is available, you’re all set. Otherwise, create your account by using `ELTAccount`’s **`createNewAccountWithUserId` method** and **perform user enrollment**.
 
 
-### Remote Sample Application
+## Remote Sample Application
 You can download a demo application on Github: <https://github.com/Element1/element-ios-face-sdk-remote-example>
-It shows how to integrate and use the Framework (all the APIs described in this document are used in the demo). The project is located in the Example directory, it is called *fm-demo-public.xcodeproj*
+It shows how to integrate and use the Framework (all the APIs described in this document are used in the demo). The project is located in the Example directory, called *fm-demo-public.xcodeproj*
 
-Please note that this public repository doesn’t contain the *ElementSDK.framework* (the framework contained in the ElementSDK archive) so you will need to copy it in the following directory: *element-ios-face-sdk-remote-example/Example/demo/Frameworks*
+Please note that this public repository doesn’t contain the *ElementSDK.framework* (the framework included in the ElementSDK archive) so you will need to copy it in the following directory: *element-ios-face-sdk-remote-example/Example/demo/Frameworks*
 
 The demo application can only be run on a device (it doesn’t run in the simulator).  You will need to enter your api key and your base url in order to run the app.
+
+## Questions?
+If you have questions, please contact devsupport@discoverelement.com.
